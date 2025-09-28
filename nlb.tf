@@ -17,7 +17,7 @@ resource "aws_lb" "golunch_nlb" {
 # Security Group para VPC Link
 resource "aws_security_group" "vpc_link_sg" {
   name_prefix = "golunch-vpc-link-"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = aws_vpc.vpc_golunch.id
 
   ingress {
     description = "Allow HTTP from API Gateway VPC Link"
@@ -52,7 +52,7 @@ resource "aws_lb_target_group" "golunch_api_tg" {
   name     = "golunch-api-tg"
   port     = 30080 # NodePort da aplicação
   protocol = "TCP"
-  vpc_id   = aws_vpc.vpc.id
+  vpc_id   = aws_vpc.vpc_golunch.id
 
   target_type = "instance"
 
@@ -88,7 +88,7 @@ resource "aws_lb_listener" "golunch_api_listener" {
 # Auto Scaling Group attachment
 data "aws_eks_node_group" "node_group" {
   cluster_name    = aws_eks_cluster.cluster.name
-  node_group_name = aws_eks_node_group.cluster.node_group_name
+  node_group_name = aws_eks_node_group.node_group.node_group_name
 }
 
 data "aws_autoscaling_group" "eks_asg" {

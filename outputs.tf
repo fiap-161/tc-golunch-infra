@@ -1,7 +1,7 @@
 # Outputs para serem consumidos pelo tc-golunch-serverless
 output "vpc_id" {
   description = "ID da VPC"
-  value       = aws_vpc.vpc.id
+  value       = aws_vpc.vpc_golunch.id
 }
 
 output "private_subnet_ids" {
