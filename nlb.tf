@@ -3,7 +3,7 @@ resource "aws_lb" "golunch_nlb" {
   name               = "golunch-api-nlb"
   internal           = true
   load_balancer_type = "network"
-  subnets            = [
+  subnets = [
     aws_subnet.subnet_public[0].id,
     aws_subnet.subnet_public[1].id,
     aws_subnet.subnet_public[2].id
@@ -50,7 +50,7 @@ resource "aws_security_group" "vpc_link_sg" {
 # Target Group para EKS NodePort
 resource "aws_lb_target_group" "golunch_api_tg" {
   name     = "golunch-api-tg"
-  port     = 30080  # NodePort da aplicação
+  port     = 30080 # NodePort da aplicação
   protocol = "TCP"
   vpc_id   = aws_vpc.vpc.id
 
