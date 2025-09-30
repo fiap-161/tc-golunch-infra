@@ -101,25 +101,17 @@ resource "aws_autoscaling_attachment" "golunch_api_asg_attachment" {
 }
 
 # Security group rule for EKS nodes to allow NLB access on NodePort
-data "aws_security_groups" "eks_node_sg" {
-  filter {
-    name   = "group-name"
-    values = ["eks-cluster-sg-*", "*node*"]
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = [aws_vpc.vpc_golunch.id]
-  }
+# Get the node group security group directly from EKS cluster
+data "aws_eks_cluster" "cluster" {
+  name = aws_eks_cluster.cluster.name
 }
 
 resource "aws_security_group_rule" "eks_nodes_nlb_access" {
-  count             = length(data.aws_security_groups.eks_node_sg.ids)
   type              = "ingress"
   from_port         = 30080
   to_port           = 30080
   protocol          = "tcp"
   cidr_blocks       = [var.cidr_vpc]
-  security_group_id = data.aws_security_groups.eks_node_sg.ids[count.index]
+  security_group_id = aws_eks_cluster.cluster.vpc_config[0].cluster_security_group_id
   description       = "Allow NLB access on NodePort 30080"
 }
