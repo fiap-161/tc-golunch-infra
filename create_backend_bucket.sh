@@ -4,7 +4,7 @@ set -euo pipefail
 # Variáveis
 REGION="us-east-1"
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-BUCKET_NAME="terraform-state-${ACCOUNT_ID}-golunch-infra"
+BUCKET_NAME="s3-golunch-infra"
 
 # Verifica se o bucket já existe
 if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
