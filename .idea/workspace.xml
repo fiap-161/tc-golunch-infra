@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bbcf0ad-6fd1-4352-a85a-09d692cbc6bf" name="Changes" comment="" />
+    <list default="true" id="6bbcf0ad-6fd1-4352-a85a-09d692cbc6bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.tf" beforeDir="false" afterPath="$PROJECT_DIR$/backend.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_backend_bucket.sh" beforeDir="false" afterPath="$PROJECT_DIR$/create_backend_bucket.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlb.tf" beforeDir="false" afterPath="$PROJECT_DIR$/nlb.tf" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,9 +19,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="33Iu4PWz71KRluYvPs2hlOOnOAc" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,7 +34,7 @@
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/force-deploy",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
     "last_opened_file_path": "/Users/ianarnold/dev/fiap/TECH CHALLENGE 3/tc-golunch-infra",
