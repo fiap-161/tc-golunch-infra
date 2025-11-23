@@ -4,7 +4,7 @@ terraform.tfstate
 terraform.tfstate.backup
 *.tfstate
 *.tfstate.*
-.idea
+.idea/
 
 
 backend-s3/.terraform/
