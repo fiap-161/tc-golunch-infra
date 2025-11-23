@@ -1,6 +1,6 @@
 # 🚀 Repositório de Infraestrutura AWS via Terraform CI/CD
 
-## 🔄 Fluxo de Trabalho (CI/CD)
+## 🔄 Fluxo de Trabalho (CI/CD):
 
 Para garantir que a infraestrutura seja criada/atualizada corretamente via **GitHub Actions**, siga os passos abaixo:
 
