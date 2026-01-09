@@ -5,7 +5,7 @@ resource "aws_eks_cluster" "cluster" {
     authentication_mode = var.accessConfig
   }
 
-  role_arn = local.lab_role
+  role_arn = aws_iam_role.eks_cluster_role.arn
   version  = "1.31"
 
   vpc_config {

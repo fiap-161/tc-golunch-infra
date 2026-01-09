@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "images" {
-  bucket = "golunch-bucket-images-terraform"
+  bucket = "golunch-bucket-images-terraform-01"
 }
 
 resource "aws_s3_bucket_public_access_block" "public" {
