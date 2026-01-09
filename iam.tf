@@ -1,10 +1,3 @@
-# VARIABLE
-
-variable "account" {
-  type        = string
-  description = "AWS Account ID"
-}
-
 # IAM ROLE — EKS CLUSTER
 # (Control Plane)
 
