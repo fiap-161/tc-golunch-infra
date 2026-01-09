@@ -42,3 +42,24 @@ output "cluster_ca_certificate" {
   description = "Certificado CA do cluster EKS"
   value       = aws_eks_cluster.cluster.certificate_authority[0].data
 }
+
+# ECR Repositories Outputs
+output "ecr_golunch_url" {
+  description = "URL do repositório ECR do golunch (monolito)"
+  value       = aws_ecr_repository.golunch.repository_url
+}
+
+output "ecr_core_service_url" {
+  description = "URL do repositório ECR do Core Service"
+  value       = aws_ecr_repository.golunch_core_service.repository_url
+}
+
+output "ecr_payment_service_url" {
+  description = "URL do repositório ECR do Payment Service"
+  value       = aws_ecr_repository.golunch_payment_service.repository_url
+}
+
+output "ecr_operation_service_url" {
+  description = "URL do repositório ECR do Operation Service"
+  value       = aws_ecr_repository.golunch_operation_service.repository_url
+}
