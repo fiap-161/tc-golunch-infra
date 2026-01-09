@@ -1,30 +1,32 @@
 #!/bin/bash
 set -euo pipefail
 
+# Variáveis
 REGION="us-east-1"
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-BUCKET_NAME="s3-golunch-infra-terraform-${ACCOUNT_ID}"
+BUCKET_NAME="s3-golunch-infra-terraform-fiap-01"
 
-echo "🔍 Verificando bucket: $BUCKET_NAME"
-
+# Verifica se o bucket já existe
 if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
-  echo "✅ Bucket $BUCKET_NAME já existe e pertence a esta conta."
+  echo "✅ Bucket $BUCKET_NAME já existe."
 else
   echo "🚀 Criando bucket $BUCKET_NAME em $REGION..."
 
   if [ "$REGION" = "us-east-1" ]; then
     aws s3api create-bucket \
-      --bucket "$BUCKET_NAME"
+      --bucket "$BUCKET_NAME" \
+      --region "$REGION"
   else
     aws s3api create-bucket \
       --bucket "$BUCKET_NAME" \
+      --region "$REGION" \
       --create-bucket-configuration LocationConstraint="$REGION"
   fi
 
-  echo "🔄 Ativando versionamento..."
+  echo "🔄 Ativando versionamento no bucket $BUCKET_NAME..."
   aws s3api put-bucket-versioning \
     --bucket "$BUCKET_NAME" \
     --versioning-configuration Status=Enabled
 
-  echo "✅ Bucket criado com sucesso."
+  echo "✅ Bucket $BUCKET_NAME criado com versionamento habilitado."
 fi
