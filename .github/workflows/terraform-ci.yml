@@ -6,6 +6,11 @@ on:
       - main
       - master
 
+# 🔴 OBRIGATÓRIO PARA OIDC
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   terraform:
     name: Terraform Validate
@@ -15,11 +20,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure AWS credentials
+      - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam:032811251961:role/git-terraform-role
+          # ⚠️ CORREÇÃO AQUI: faltavam os "::" depois do iam
+          role-to-assume: arn:aws:iam::032811251961:role/git-terraform-role
           aws-region: us-east-1
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
